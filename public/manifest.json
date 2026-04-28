@@ -1,0 +1,23 @@
+{
+  "name": "Chitr.store — Kerala Art Marketplace",
+  "short_name": "Chitr.store",
+  "description": "Buy and auction original Kerala art. Support artists directly.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#3A1A5C",
+  "theme_color": "#5B2D8E",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "/icons/icon-72.png",   "sizes": "72x72",   "type": "image/png", "purpose": "maskable any" },
+    { "src": "/icons/icon-96.png",   "sizes": "96x96",   "type": "image/png", "purpose": "maskable any" },
+    { "src": "/icons/icon-128.png",  "sizes": "128x128", "type": "image/png", "purpose": "maskable any" },
+    { "src": "/icons/icon-144.png",  "sizes": "144x144", "type": "image/png", "purpose": "maskable any" },
+    { "src": "/icons/icon-192.png",  "sizes": "192x192", "type": "image/png", "purpose": "maskable any" },
+    { "src": "/icons/icon-512.png",  "sizes": "512x512", "type": "image/png", "purpose": "maskable any" }
+  ],
+  "screenshots": [
+    { "src": "/screenshots/gallery.jpg", "sizes": "1280x720", "type": "image/jpeg", "label": "Gallery" },
+    { "src": "/screenshots/auction.jpg", "sizes": "1280x720", "type": "image/jpeg", "label": "Live Auctions" }
+  ],
+  "categories": ["shopping", "art", "lifestyle"]
+}

@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /artist/dashboard
+Disallow: /buyer/
+Disallow: /auth/
+
+Sitemap: https://chitr.store/sitemap.xml

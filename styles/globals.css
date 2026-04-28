@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'DM Sans', system-ui, sans-serif;
+
+  --brand:       #5B2D8E;
+  --brand-dark:  #3A1A5C;
+  --brand-mid:   #7B52AB;
+  --brand-light: #EDE7F6;
+  --amber:       #FF6F00;
+  --amber-light: #FFF3E0;
+  --teal:        #00897B;
+  --dark:        #1A1A2E;
+  --text:        #2D2D2D;
+  --muted:       #6B6B6B;
+  --border:      #E5E0ED;
+  --bg:          #FDFCFF;
+  --card:        #FFFFFF;
+}
+
+* { box-sizing: border-box; }
+
+html {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  scroll-behavior: smooth;
+}
+
+/* ── Typography ──────────────────────────────────────── */
+.font-display { font-family: var(--font-display); }
+
+h1, h2, h3, .heading {
+  font-family: var(--font-display);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+/* ── Chitr Brand Components ──────────────────────────── */
+.chitr-card {
+  @apply bg-white rounded-2xl border border-[var(--border)] shadow-sm
+         hover:shadow-md transition-shadow duration-300;
+}
+
+.chitr-btn-primary {
+  @apply bg-[var(--brand)] text-white font-medium px-6 py-3 rounded-xl
+         hover:bg-[var(--brand-dark)] transition-colors duration-200
+         focus:outline-none focus:ring-2 focus:ring-[var(--brand)] focus:ring-offset-2
+         disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+.chitr-btn-secondary {
+  @apply bg-transparent text-[var(--brand)] border border-[var(--brand)]
+         font-medium px-6 py-3 rounded-xl
+         hover:bg-[var(--brand-light)] transition-colors duration-200
+         focus:outline-none focus:ring-2 focus:ring-[var(--brand)] focus:ring-offset-2;
+}
+
+.chitr-btn-amber {
+  @apply bg-[var(--amber)] text-white font-medium px-6 py-3 rounded-xl
+         hover:bg-orange-700 transition-colors duration-200
+         focus:outline-none focus:ring-2 focus:ring-[var(--amber)] focus:ring-offset-2;
+}
+
+.chitr-input {
+  @apply w-full px-4 py-3 rounded-xl border border-[var(--border)]
+         bg-white text-[var(--text)] placeholder-[var(--muted)]
+         focus:outline-none focus:ring-2 focus:ring-[var(--brand)] focus:border-transparent
+         transition-all duration-200;
+}
+
+.chitr-label {
+  @apply block text-sm font-medium text-[var(--text)] mb-1.5;
+}
+
+/* ── Artwork Grid ─────────────────────────────────────── */
+.artwork-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+/* ── Auction countdown ────────────────────────────────── */
+.countdown-digit {
+  @apply font-display text-3xl font-bold text-[var(--brand)] leading-none;
+}
+
+/* ── Bid flash animation ──────────────────────────────── */
+.bid-updated {
+  animation: bidFlash 0.8s ease-in-out;
+}
+
+@keyframes bidFlash {
+  0%, 100% { background-color: transparent; }
+  40%       { background-color: #FFF3E0; }
+}
+
+/* ── Page transitions ────────────────────────────────── */
+.page-enter {
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Scrollbar styling ───────────────────────────────── */
+::-webkit-scrollbar              { width: 6px; height: 6px; }
+::-webkit-scrollbar-track        { background: var(--bg); }
+::-webkit-scrollbar-thumb        { background: var(--brand-mid); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover  { background: var(--brand); }
+
+/* ── Image zoom on hover (artwork cards) ─────────────── */
+.artwork-image-wrap {
+  overflow: hidden;
+  border-radius: 1rem 1rem 0 0;
+}
+.artwork-image-wrap img {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.artwork-image-wrap:hover img {
+  transform: scale(1.04);
+}
+
+/* ── Loading skeleton ────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg, #f0ebf9 25%, #e6dff5 50%, #f0ebf9 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 0.5rem;
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
