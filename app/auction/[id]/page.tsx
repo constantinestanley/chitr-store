@@ -58,7 +58,7 @@ export default function AuctionDetailPage() {
     // Get current user
     supabase.auth.getUser().then(({ data: { user: u } }) => {
       if (u) supabase.from('profiles').select('*').eq('id', u.id).single()
-        .then(({ data }) => setUser(data unknown as Profile))
+        .then(({ data }) => setUser(data as unknown as Profile))
     })
   }, [loadAuction, loadBids])
 
