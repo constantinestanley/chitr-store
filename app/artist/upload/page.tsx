@@ -13,7 +13,7 @@ const MEDIUMS: Medium[] = ['oil','acrylic','watercolor','charcoal','digital','mi
 
 export default function UploadPage() {
   const router   = useRouter()
-  const supabase = createClient()
+  const supabase = createClient() as any
 
   const [files, setFiles]         = useState<File[]>([])
   const [previews, setPreviews]   = useState<string[]>([])
