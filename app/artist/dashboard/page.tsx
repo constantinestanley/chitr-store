@@ -2,7 +2,7 @@ import { redirect } from 'next/navigation'
 import Link from 'next/link'
 import { Plus, TrendingUp, Eye, ShoppingBag, Award } from 'lucide-react'
 import Navbar from '@/components/layout/Navbar'
-import { createServerSupabaseClient } from '@/lib/supabase'
+import { createServerSupabaseClient } from '@/lib/supabase-server'
 import { formatCurrency } from '@/lib/utils'
 import type { Artwork, Order } from '@/types'
 
