@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Package, Award, ExternalLink } from 'lucide-react'
 import Navbar from '@/components/layout/Navbar'
-import { createServerSupabaseClient } from '@/lib/supabase'
+import { createServerSupabaseClient } from '@/lib/supabase-server'
 import { formatCurrency, formatDate } from '@/lib/utils'
 import type { Order } from '@/types'
 
