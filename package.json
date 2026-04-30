@@ -30,6 +30,7 @@
     "date-fns": "^3.6.0",
     "sharp": "^0.33.4",
     "@anthropic-ai/sdk": "latest"
+
   },
   "devDependencies": {
     "typescript": "^5.4.0",
