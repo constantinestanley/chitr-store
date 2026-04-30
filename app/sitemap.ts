@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
-import { createAdminClient } from '@/lib/supabase'
+
+import { createServerSupabaseClient } from '@/lib/supabase-server'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const supabase = createAdminClient()
