@@ -38,7 +38,7 @@ export default function RegisterPage() {
     } else {
       // Update role in profiles table
       const { data: { user } } = await supabase.auth.getUser()
-      if (user) await supabase.from('profiles').update({ role }).eq('id', user.id)
+      if (user) await (supabaseb as any).from('profiles').update({ role }).eq('id', user.id)
       toast.success('Account created! Check your email to confirm.')
       router.push(role === 'artist' ? '/artist/dashboard' : redirect)
     }
