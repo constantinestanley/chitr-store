@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { createServerSupabaseClient, createAdminClient } from '@/lib/supabase'
+import { createServerSupabaseClient, createAdminClient } from '@/lib/supabase-server'
 
 // GET /api/bids?auction_id=xxx
 export async function GET(req: NextRequest) {
