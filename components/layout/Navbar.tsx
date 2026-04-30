@@ -26,7 +26,7 @@ export default function Navbar() {
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (session?.user) {
         supabase.from('profiles').select('*').eq('id', session.user.id).single()
-          .then(({ data }) => setUser(data as Profile))
+          .then(({ data }) => setUser(data as unknown as Profile))
       }
     })
   }, [])
