@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import AuctionCard from '@/components/auction/AuctionCard'
-import { createServerSupabaseClient } from '@/lib/supabase'
+import { createServerSupabaseClient } from '@/lib/supabase-server'
 import type { Auction } from '@/types'
 
 export const metadata: Metadata = {
