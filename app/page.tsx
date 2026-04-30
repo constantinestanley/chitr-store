@@ -4,7 +4,7 @@ import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import ArtworkCard from '@/components/artwork/ArtworkCard'
 import AuctionCard from '@/components/auction/AuctionCard'
-import { createServerSupabaseClient } from '@/lib/supabase'
+import { createServerSupabaseClient } from '@/lib/supabase-server'
 import type { Artwork, Auction } from '@/types'
 
 async function getFeaturedArtworks(): Promise<Artwork[]> {
