@@ -6,7 +6,7 @@ import { Award, Truck, RotateCcw, Share2 } from 'lucide-react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import BuyButton from '@/components/artwork/BuyButton'
-import { createServerSupabaseClient } from '@/lib/supabase'
+import { createServerSupabaseClient } from '@/lib/supabase-server'
 import { formatCurrency, artworkDimensions, formatDate } from '@/lib/utils'
 import type { Artwork } from '@/types'
 
