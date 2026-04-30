@@ -1,1 +1,2 @@
-// ... (all previous content of the file)\nexport const dynamic = 'force-dynamic'
+// ... (all previous content of the file)
+export const dynamic = 'force-dynamic'
