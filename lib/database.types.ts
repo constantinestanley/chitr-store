@@ -56,9 +56,25 @@ export type Database = {
           created_at: string
           updated_at: string
         }
-        Insert: Partial<Database['public']['Tables']['artworks']['Row']> & {
-          artist_id: string; title: string; description: string
-          price: number; medium: string; thumbnail: string; images: string[]
+        Insert: {
+          artist_id: string
+          title: string
+          description: string
+          price: number
+          medium: string
+          thumbnail: string
+          images: string[]
+          currency?: string
+          width_cm?: number
+          height_cm?: number
+          year_created?: number
+          status?: string
+          is_original?: boolean
+          is_print_available?: boolean
+          print_price?: number | null
+          tags?: string[]
+          category_id?: string | null
+          certificate_id?: string | null
         }
         Update: Partial<Database['public']['Tables']['artworks']['Row']>
       }
