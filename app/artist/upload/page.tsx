@@ -85,7 +85,7 @@ export default function UploadPage() {
       }
 
       // Create artwork record
-      const insertData = {
+      const { error } = await supabase.from('artworks').insert({
         artist_id:          user.id,
         title:              form.title,
         description:        form.description,
@@ -101,9 +101,7 @@ export default function UploadPage() {
         thumbnail:          imageUrls[0],
         tags:               form.tags.split(',').map((t: string) => t.trim()).filter(Boolean),
         status:             'pending_review',
-      }
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const { error } = await (supabase as any).from('artworks').insert(insertData)
+      })
       if (error) throw error
       toast.success('Artwork submitted for review!')
       router.push('/artist/dashboard')
