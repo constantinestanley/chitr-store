@@ -1,47 +1,38 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { createServerClient } from '@supabase/ssr'
+﻿import { createServerClient } from "@supabase/ssr"
+import { NextResponse } from "next/server"
+import type { NextRequest } from "next/server"
 
-const PROTECTED_ROUTES  = ['/artist/', '/buyer/', '/wishlist', '/order/']
-const AUTH_ROUTES       = ['/auth/login', '/auth/register']
-
-export async function middleware(req: NextRequest) {
-  const res = NextResponse.next()
-  const { pathname } = req.nextUrl
-
+export async function middleware(request: NextRequest) {
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
-        getAll:  () => req.cookies.getAll(),
-        setAll: (cookiesToSet: { name: string; value: string; options?: object }[]) => {
-          cookiesToSet.forEach(({ name, value, options }) => {
-            req.cookies.set(name, value)
-            res.cookies.set(name, value, options)
-          })
+        get(name: string) {
+          return request.cookies.get(name)?.value
         },
       },
     }
   )
 
-  const { data: { session } } = await supabase.auth.getSession()
+  const {
+    data: { session },
+  } = await supabase.auth.getSession()
 
-  const isProtected = PROTECTED_ROUTES.some(r => pathname.startsWith(r))
-  const isAuthRoute = AUTH_ROUTES.some(r => pathname.startsWith(r))
+  const protectedPaths = ["/artist/dashboard", "/artist/upload", "/wishlist", "/orders"]
+  const isProtected = protectedPaths.some((path) =>
+    request.nextUrl.pathname.startsWith(path)
+  )
 
-  if (isProtected && !session) {
-    return NextResponse.redirect(new URL(`/auth/login?redirect=${pathname}`, req.url))
+  if (!session && isProtected) {
+    const loginUrl = new URL("/login", request.url)
+    loginUrl.searchParams.set("redirect", request.nextUrl.pathname)
+    return NextResponse.redirect(loginUrl)
   }
 
-  if (isAuthRoute && session) {
-    return NextResponse.redirect(new URL('/', req.url))
-  }
-
-  return res
+  return NextResponse.next()
 }
 
 export const config = {
-  matcher: [
-    '/((?!_next/static|_next/image|favicon.ico|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)',
-  ],
+  matcher: ["/artist/:path*", "/wishlist", "/orders"],
 }

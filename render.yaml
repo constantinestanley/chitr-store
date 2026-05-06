@@ -1,0 +1,33 @@
+﻿services:
+  - type: web
+    name: art-auction-pro-max
+    runtime: node
+    region: oregon
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NEXT_PUBLIC_SUPABASE_URL
+        sync: false
+      - key: NEXT_PUBLIC_SUPABASE_ANON_KEY
+        sync: false
+      - key: SUPABASE_SERVICE_ROLE_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: RAZORPAY_KEY_ID
+        sync: false
+      - key: RAZORPAY_KEY_SECRET
+        sync: false
+      - key: RAZORPAY_WEBHOOK_SECRET
+        sync: false
+      - key: CRYPTO_GATEWAY_URL
+        sync: false
+      - key: CRYPTO_GATEWAY_API_KEY
+        sync: false
+      - key: ZONELESS_API_KEY
+        sync: false
+      - key: ZONELESS_WALLET
+        sync: false
+      - key: FREERESEND_API_KEY
+        sync: false
+    plan: free
